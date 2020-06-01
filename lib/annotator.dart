@@ -11,15 +11,6 @@ class Annotation extends Comparable<Annotation> {
   int compareTo(Annotation other) {
     return range.start.compareTo(other.range.start);
   }
-
-  // NOTE checks if the text has hashtags
-  static List<RegExpMatch> checkHashtags(String value) {
-    final hashTagRegExp = Annotator.hashTagRegExp;
-
-    final tags = hashTagRegExp.allMatches(value).toList();
-
-    return (tags.isEmpty) ? [] : tags;
-  }
 }
 
 class Annotator {
@@ -31,6 +22,15 @@ class Annotator {
   );
 
   Annotator({this.textStyle, this.decoratedStyle});
+
+  // NOTE checks if the text has hashtags
+  static List<RegExpMatch> checkHashtags(String value) {
+    final hashTagRegExp = Annotator.hashTagRegExp;
+
+    final tags = hashTagRegExp.allMatches(value).toList();
+
+    return (tags.isEmpty) ? [] : tags;
+  }
 
   List<Annotation> _getSourceAnnotations(
       List<RegExpMatch> tags, String copiedText) {
