@@ -148,7 +148,7 @@ class HashTagEditableTextWithHintText extends StatelessWidget {
   final int maxLines;
   final TextInputType keyboardType;
   final bool autofocus;
-  final String hintText;
+  final Widget hintText;
   final TextStyle hintTextStyle;
 
   @override
@@ -240,17 +240,14 @@ class _Body extends StatelessWidget {
 }
 
 class _HintText extends StatelessWidget {
-  final String text;
+  final Widget text;
   final TextStyle textStyle;
 
   _HintText(this.text, this.textStyle);
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+  Widget build(BuildContext context) {    
     return Provider.of<HintTextController>(context).isContentEmpty
-        ? Text(text,
-            style: textStyle ??
-                theme.textTheme.bodyText2.copyWith(color: theme.hintColor))
+        ? text
         : const SizedBox.shrink();
   }
 }

@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
             controller: TextEditingController(),
           ),
           HashTagEditableTextWithHintText(
-            hintText: "THIS IS HINT TEXT",
+            hintText: Text("THIS IS HINT TEXT"),
             hintTextStyle:
                 TextStyle(fontSize: 14, color: Theme.of(context).hintColor),
             basicStyle: TextStyle(fontSize: 14, color: Colors.black),
